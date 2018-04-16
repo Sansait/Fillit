@@ -1,25 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   toolbox.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/04/16 16:48:58 by sklepper          #+#    #+#             */
-/*   Updated: 2018/04/16 23:48:34 by nihuynh          ###   ########.fr       */
+/*   Created: 2018/04/17 00:44:43 by nihuynh           #+#    #+#             */
+/*   Updated: 2018/04/17 00:44:47 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <fcntl.h>
-#include "fillit.h"
+#include "libft.h"
+#include <stdlib.h>
 
-int		main(int ac, char **av)
+/*
+** Handle the 2 types of output for the error.
+*/
+
+void	ft_exit_error(void)
 {
-	int fd;
+	ft_putstr(MSG_ERROR);
+	exit(-1);
+}
 
-	if (ac != 2)
-		ft_exit_usage();
-	ASSERT((fd = open(av[1], O_RDONLY)) == -1);
-	ft_parse(fd);
-	return (0);
+void	ft_exit_usage(void)
+{
+	ft_putstr(MSG_USAGE);
+	exit(-1);
 }
