@@ -22,5 +22,7 @@ typedef struct	s_tetro
 }				t_tetro;
 
 void	ft_error_exit(void);
+char	*ft_parse(int fd);
+
 
 #endif
