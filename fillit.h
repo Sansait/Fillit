@@ -1,6 +1,7 @@
 #ifndef FILLIT_FILLIT_H
 # define FILLIT_FILLIT_H
 # define BUFF_SIZE 546
+# define MSG_ERROR "error"
 
 #include "Libft/libft.h"
 
@@ -10,7 +11,7 @@ typedef struct	s_point
 	int y;
 }				t_point;
 
-typedef struct	s_tetrominos
+typedef struct	s_tetro
 {
 	t_point					hash1;
 	t_point					hash2;
@@ -18,7 +19,8 @@ typedef struct	s_tetrominos
 	t_point					hash4;
 	int						length;
 	int						width;
-	struct s_tetrominos		*next;
-}				t_list;
+}				t_tetro;
+
+void	ft_error_exit(void);
 
 #endif
