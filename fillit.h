@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/16 20:18:58 by nihuynh           #+#    #+#             */
-/*   Updated: 2018/04/16 23:51:00 by nihuynh          ###   ########.fr       */
+/*   Updated: 2018/04/18 19:50:41 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,9 +52,10 @@ void			tile_isvalid(char c);
 ** Functions in parse_toolbox.c :
 ** built_point: Create a point from postion x and y.
 ** check_links : Calculate the link_count of a hash tile.
-** set_tetro : Set the length and width of a tetro node.
+** set_tetro : Set the length and width of a tetro node and normalize hash[4].
 */
 t_point			built_point(int x, int y);
-int 			check_links(t_point target, t_point pos_set[4]);
-void 			set_tetro(t_tetro **pnode);
+int				check_links(t_point target, t_point pos_set[4]);
+void			set_tetro(t_tetro **pnode);
+
 #endif

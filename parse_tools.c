@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/18 18:38:00 by nihuynh           #+#    #+#             */
-/*   Updated: 2018/04/18 18:38:02 by nihuynh          ###   ########.fr       */
+/*   Updated: 2018/04/18 19:52:21 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ t_point	built_point(int x, int y)
 	return (res);
 }
 
-int 	check_links(t_point target, t_point pos_set[4])
+int		check_links(t_point target, t_point pos_set[4])
 {
 	int i;
 	int link_count;
@@ -43,7 +43,7 @@ int 	check_links(t_point target, t_point pos_set[4])
 	return (link_count);
 }
 
-void 	set_tetro(t_tetro **pnode)
+void	set_tetro(t_tetro **pnode)
 {
 	int i;
 	int xoffset;
@@ -60,8 +60,8 @@ void 	set_tetro(t_tetro **pnode)
 	{
 		xoffset = ft_min(xoffset, (*pnode)->hash[i].x);
 		yoffset = ft_min(yoffset, (*pnode)->hash[i].y);
-		width	= ft_max(width, (*pnode)->hash[i].x);	
-		length	= ft_max(length, (*pnode)->hash[i].y);
+		width = ft_max(width, (*pnode)->hash[i].x);
+		length = ft_max(length, (*pnode)->hash[i].y);
 	}
 	while (i++ < 4)
 	{
