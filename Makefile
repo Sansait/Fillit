@@ -6,16 +6,18 @@
 #    By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/04/16 18:24:33 by nihuynh           #+#    #+#              #
-#    Updated: 2018/04/16 23:42:59 by nihuynh          ###   ########.fr        #
+#    Updated: 2018/04/18 18:38:19 by nihuynh          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 # Config Fillit:
 NAME	:=	fillit
-SRC		:=	main.c reader.c toolbox.c
+SRC		:=	main.c reader.c toolbox.c parse_tools.c
+MAP		:=	test.fillit
 DEBUG	:=	TRUE
 RM		:=	/bin/rm -f
 CC		:=	clang
-CFLAG	:=	-Werror -Wall -Wextra -g
+CFLAG	:=	-Werror -Wall -Wextra
+DEBUGCC :=	-g -fsanitize=address
 # **************************************************************************** #
 # directories :
 SRCDIR  :=	.
@@ -44,4 +46,9 @@ fclean: clean
 	make -C $(LIBDIR)/ fclean
 	$(RM) $(NAME)
 re: fclean all
-.PHONY: all, $(NAME), clean fclean, re
+debug : clean $(OBJ)
+	$(CC) $(CFLAG) $(DEBUGCC) -o $(NAME) $(OBJ) $(LIBFLAG) $(INCFLAG)
+	@valgrind --tool=memcheck --leak-check=full --log-file="val.log" ./$(NAME) $(MAP)
+	@cat val.log | less
+
+.PHONY: all, $(NAME), clean, fclean, re, val

@@ -18,7 +18,6 @@
 # define MSG_USAGE "usage: fillit [] map_file.fillit"
 # define HASH '#'
 # define TILE '.' || '#'
-# define ASSERT(test) (test) ? ((void) 0) : ft_exit_error()
 
 typedef struct	s_point
 {
@@ -32,12 +31,10 @@ typedef struct	s_tetro
 	int			length;
 	int			width;
 }				t_tetro;
-
 /*
 ** Read the file from a safe and open fd.
 */
 t_list			ft_parse(int fd);
-
 /*
 ** Functions in toolbox.c :
 ** ft_exit_error : Commun exit for every error encounter during the program.
@@ -45,14 +42,19 @@ t_list			ft_parse(int fd);
 */
 void			ft_exit_error(void);
 void			ft_exit_usage(void);
+void			ft_exit_clean(void);
 /*
 ** Handle the 2 types of output for the tiles (isvalid can exit the program).
 */
 int				tile_ishash(char c);
 void			tile_isvalid(char c);
 /*
-** Create a point from postion x and y.
+** Functions in parse_toolbox.c :
+** built_point: Create a point from postion x and y.
+** check_links : Calculate the link_count of a hash tile.
+** set_tetro : Set the length and width of a tetro node.
 */
 t_point			built_point(int x, int y);
-
+int 			check_links(t_point target, t_point pos_set[4]);
+void 			set_tetro(t_tetro **pnode);
 #endif

@@ -20,6 +20,12 @@ void	ft_exit_error(void)
 	exit(-1);
 }
 
+void	ft_exit_clean(void)
+{
+	ft_putstr(MSG_ERROR);
+	exit(-1);
+}
+
 void	ft_exit_usage(void)
 {
 	ft_putstr(MSG_USAGE);
@@ -36,13 +42,4 @@ void	tile_isvalid(char c)
 	if (c == TILE)
 		return ;
 	ft_exit_error();
-}
-
-t_point	built_point(int x, int y)
-{
-	t_point res;
-
-	res.x = x;
-	res.y = y;
-	return (res);
 }
