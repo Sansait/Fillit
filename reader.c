@@ -27,7 +27,7 @@ void		ft_fastcheck(char *data, int tetro_count)
 	while (tetro_count--)
 	{
 		ASSERT(data[4] != '\n' || data[9] != '\n' || \
-				data[14] != '\n' || data [19] != '\n');
+				data[14] != '\n' || data[19] != '\n');
 		if (tetro_count)
 		{
 			ASSERT(data[20] != '\n');
@@ -80,7 +80,7 @@ t_point		*ft_parse_oneblock(char **data)
 ** TODO : nico
 */
 
-t_tetro 	ft_witch_tetro(t_point	pos_set[4])
+t_tetro		ft_witch_tetro(t_point pos_set[4])
 {
 	t_tetro	*node;
 
