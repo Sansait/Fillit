@@ -36,7 +36,7 @@ typedef struct	s_tetro
 /*
 ** Read the file from a safe and open fd.
 */
-char			*ft_parse(int fd);
+t_list			ft_parse(int fd);
 
 /*
 ** Functions in toolbox.c :
@@ -48,11 +48,11 @@ void			ft_exit_usage(void);
 /*
 ** Handle the 2 types of output for the tiles (isvalid can exit the program).
 */
-int		tile_ishash(char c);
-int		tile_isvalid(char c);
+int				tile_ishash(char c);
+void			tile_isvalid(char c);
 /*
 ** Create a point from postion x and y.
 */
-t_point	built_point(int x, int y);
+t_point			built_point(int x, int y);
 
 #endif

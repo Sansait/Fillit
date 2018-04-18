@@ -46,12 +46,13 @@ void		ft_fastcheck(char *data, int tetro_count)
 ** toby[3] = hash count
 */
 
-t_point		ft_parse_oneblock(char **data)[4]
+t_point		*ft_parse_oneblock(char **data)
 {
-	t_point	pos_set[4];
+	t_point	*pos_set;
 	int		toby[4];
 
 	ft_bzero(toby, 4 * sizeof(int));
+	pos_set = ft_memalloc(4 * sizeof(t_point));
 	while (toby[0] < 4)
 	{
 		toby[1] = 0;
@@ -79,15 +80,16 @@ t_point		ft_parse_oneblock(char **data)[4]
 ** TODO : nico
 */
 
-t_tetro ft_witch_tetro(t_point	pos_set[4])
+t_tetro 	ft_witch_tetro(t_point	pos_set[4])
 {
-	t_tetro	node;
+	t_tetro	*node;
 
-	ft_bzero(node, sizeof(node));
-	node.hash = pos_set;
-	node.length = 1;
-	node.width = 4;
-	return (node);
+	node = NULL;
+	ft_bzero((void*)node, sizeof(node));
+	ft_memcpy(node->hash, pos_set, 4 * sizeof(t_point));
+	node->length = 1;
+	node->width = 4;
+	return (*node);
 }
 
 /*
@@ -101,16 +103,16 @@ t_list		ft_slowcheck(char *data, int tetro_count)
 	t_point	cood[4];
 	t_tetro	node;
 
-	t_list = NULL;
+	res = NULL;
 	while (tetro_count--)
 	{
-		cood = ft_parse_oneblock(&data);
+		ft_memcpy(cood, ft_parse_oneblock(&data), 4 * sizeof(t_point));
 		if (tetro_count > 0)
 			data++;
 		node = ft_witch_tetro(cood);
 		ft_lstadd(&res, ft_lstnew(&node, sizeof(node)));
 	}
-	return (res);
+	return (*res);
 }
 
 /*
@@ -118,11 +120,10 @@ t_list		ft_slowcheck(char *data, int tetro_count)
 ** Fetch the data from the open file.
 */
 
-char	*ft_parse(int fd)
+t_list		ft_parse(int fd)
 {
 	char	buff[BUFF_SIZE + 1];
 	int		bytes;
-	char	*str;
 	t_list	tetra;
 
 	bytes = read(fd, buff, BUFF_SIZE);
