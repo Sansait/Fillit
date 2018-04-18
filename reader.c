@@ -10,7 +10,113 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "libft.h"
 #include "fillit.h"
+
+/*
+** Verify that the format of the map is OK.
+** Check all the '/n'aka (the format of the data).
+*/
+
+void		ft_fastcheck(char *data, int tetro_count)
+{
+	ssize_t len_data;
+
+	len_data = ft_strlen(data);
+	ASSERT(!len_data);
+	while (tetro_count--)
+	{
+		ASSERT(data[4] != '\n' || data[9] != '\n' || \
+				data[14] != '\n' || data [19] != '\n');
+		if (tetro_count)
+		{
+			ASSERT(data[20] != '\n');
+			data += 21;
+		}
+	}
+}
+
+/*
+** Parse one data block.
+** Built a data set from the map string.
+** return a group of 4 points.
+** toby[0] = line
+** toby[1] = colomns
+** toby[2] = offset
+** toby[3] = hash count
+*/
+
+t_point		ft_parse_oneblock(char **data)[4]
+{
+	t_point	pos_set[4];
+	int		toby[4];
+
+	ft_bzero(toby, 4 * sizeof(int));
+	while (toby[0] < 4)
+	{
+		toby[1] = 0;
+		while (toby[1] < 4)
+		{
+			tile_isvalid(*data[(1 + toby[0]) * toby[1] + toby[2]]);
+			if (tile_ishash(*data[(1 + toby[0]) * toby[1] + toby[2]]))
+			{
+				toby[3]++;
+				if (toby[3] == 4)
+					ft_exit_error();
+				pos_set[toby[3]] = built_point(toby[0], toby[1]);
+			}
+			toby[1]++;
+		}
+		toby[2]++;
+	}
+	data += 20;
+	return (pos_set);
+}
+
+/*
+** verify that the pos_set is gud
+** return a tetros struct
+** TODO : nico
+*/
+
+t_tetro ft_witch_tetro(t_point	pos_set[4])
+{
+	t_tetro	node;
+
+	ft_bzero(node, sizeof(node));
+	node.hash = pos_set;
+	node.length = 1;
+	node.width = 4;
+	return (node);
+}
+
+/*
+** Make the data list with all the tetros.
+** Verify that the charset of the map is OK & call the parcer.
+*/
+
+t_list		ft_slowcheck(char *data, int tetro_count)
+{
+	t_list	*res;
+	t_point	cood[4];
+	t_tetro	node;
+
+	t_list = NULL;
+	while (tetro_count--)
+	{
+		cood = ft_parse_oneblock(&data);
+		if (tetro_count > 0)
+			data++;
+		node = ft_witch_tetro(cood);
+		ft_lstadd(&res, ft_lstnew(&node, sizeof(node)));
+	}
+	return (res);
+}
+
+/*
+** Read fron the file and check the line count.
+** Fetch the data from the open file.
+*/
 
 char	*ft_parse(int fd)
 {

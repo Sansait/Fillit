@@ -10,8 +10,9 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <fcntl.h>
+#include "libft.h"
 #include "fillit.h"
+#include <fcntl.h>
 
 int		main(int ac, char **av)
 {

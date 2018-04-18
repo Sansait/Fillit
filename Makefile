@@ -11,7 +11,7 @@
 # **************************************************************************** #
 # Config Fillit:
 NAME	:=	fillit
-SRC		:=	main.c reader.c error_checker.c toolbox.c
+SRC		:=	main.c reader.c toolbox.c
 DEBUG	:=	TRUE
 RM		:=	/bin/rm -f
 CC		:=	clang

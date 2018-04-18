@@ -11,11 +11,8 @@
 /* ************************************************************************** */
 
 #include "libft.h"
+#include "fillit.h"
 #include <stdlib.h>
-
-/*
-** Handle the 2 types of output for the error.
-*/
 
 void	ft_exit_error(void)
 {
@@ -27,4 +24,25 @@ void	ft_exit_usage(void)
 {
 	ft_putstr(MSG_USAGE);
 	exit(-1);
+}
+
+int		tile_ishash(char c)
+{
+	return (c == HASH) ? 1 : 0;
+}
+
+void	tile_isvalid(char c)
+{
+	if (c == TILE)
+		return ;
+	ft_exit_error();
+}
+
+t_point	built_point(int x, int y)
+{
+	t_point res;
+
+	res.x = x;
+	res.y = y;
+	return (res);
 }
