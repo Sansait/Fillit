@@ -23,6 +23,7 @@ void	ft_exit_error(void)
 void	ft_exit_clean(void)
 {
 	ft_putstr(MSG_ERROR);
+	ft_putstr("\n\t<============= HERE CLEAN =============>\n");
 	exit(-1);
 }
 
@@ -34,12 +35,10 @@ void	ft_exit_usage(void)
 
 int		tile_ishash(char c)
 {
-	return (c == HASH) ? 1 : 0;
+	return (c == '#') ? 1 : 0;
 }
 
-void	tile_isvalid(char c)
+int	tile_notvalid(char c)
 {
-	if (c == TILE)
-		return ;
-	ft_exit_error();
+	return (c == '.' || c == '#') ? 0 : 1;
 }

@@ -6,18 +6,19 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/16 20:18:58 by nihuynh           #+#    #+#             */
-/*   Updated: 2018/04/18 19:50:41 by nihuynh          ###   ########.fr       */
+/*   Updated: 2018/04/19 00:14:46 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FILLIT_FILLIT_H
 # define FILLIT_FILLIT_H
 
+# include "libft.h"
 # define BUFF_SIZE 546
 # define MSG_ERROR "error"
 # define MSG_USAGE "usage: fillit [] map_file.fillit"
-# define HASH '#'
-# define TILE '.' || '#'
+
+# define DEBUG 1
 
 typedef struct	s_point
 {
@@ -47,7 +48,7 @@ void			ft_exit_clean(void);
 ** Handle the 2 types of output for the tiles (isvalid can exit the program).
 */
 int				tile_ishash(char c);
-void			tile_isvalid(char c);
+int			tile_notvalid(char c);
 /*
 ** Functions in parse_toolbox.c :
 ** built_point: Create a point from postion x and y.
@@ -55,7 +56,14 @@ void			tile_isvalid(char c);
 ** set_tetro : Set the length and width of a tetro node and normalize hash[4].
 */
 t_point			built_point(int x, int y);
-int				check_links(t_point target, t_point pos_set[4]);
+int				check_links(int select, t_point pos_set[4]);
 void			set_tetro(t_tetro **pnode);
+/*
+** Functions in display.c :
+** ONLY PRINT IF DEBUG IS AT 1
+*/
+void			print_int(char *name, int value);
+void			print_pos_set(t_point set[4]);
+void			print_lst_tetro(t_list *lst_tetro);
 
 #endif

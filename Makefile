@@ -6,13 +6,14 @@
 #    By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/04/16 18:24:33 by nihuynh           #+#    #+#              #
-#    Updated: 2018/04/18 18:38:19 by nihuynh          ###   ########.fr        #
+#    Updated: 2018/04/19 00:12:54 by nihuynh          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 # Config Fillit:
 NAME	:=	fillit
-SRC		:=	main.c reader.c toolbox.c parse_tools.c
-MAP		:=	test.fillit
+SRC		:=	main.c reader.c toolbox.c parse_tools.c display.c
+HEAD	:=	fillit.h Libft/libft.h
+MAP		:=	./map/.fillit
 DEBUG	:=	TRUE
 RM		:=	/bin/rm -f
 CC		:=	clang
@@ -32,7 +33,7 @@ OBJ		:=	$(addprefix $(OBJDIR)/, $(SRC:.c=.o))
 # **************************************************************************** #
 # Target rules :
 all: $(NAME)
-$(NAME): $(LIBDIR)/libft.a $(OBJ)
+$(NAME): $(LIBDIR)/libft.a $(OBJ) $(HEAD)
 	$(CC) $(CFLAG) -o $@ $(OBJ) $(LIBFLAG) $(INCFLAG)
 $(LIBDIR)/libft.a:
 	make -C $(LIBDIR)/ fclean && make -C $(LIBDIR)/
@@ -48,7 +49,4 @@ fclean: clean
 re: fclean all
 debug : clean $(OBJ)
 	$(CC) $(CFLAG) $(DEBUGCC) -o $(NAME) $(OBJ) $(LIBFLAG) $(INCFLAG)
-	@valgrind --tool=memcheck --leak-check=full --log-file="val.log" ./$(NAME) $(MAP)
-	@cat val.log | less
-
 .PHONY: all, $(NAME), clean, fclean, re, val
