@@ -6,7 +6,7 @@
 /*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/16 16:50:26 by sklepper          #+#    #+#             */
-/*   Updated: 2018/04/19 00:38:32 by nihuynh          ###   ########.fr       */
+/*   Updated: 2018/04/19 04:22:25 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,9 +73,10 @@ static	t_point	*ft_parse_oneblock(char *data)
 	}
 	return (pos_set);
 }
+
 /*
 ** verify that the pos_set is gud.								<-alloc memory.
-** count the link count and make sure it above 6. 
+** count the link count and make sure it above 6.
 ** call set the node for final tweaks.
 ** return a pointer on the tetros.
 */
@@ -120,7 +121,7 @@ static	t_list	ft_slowcheck(char *data, int tetro_count)
 	while (tetro_count--)
 	{
 		ft_memcpy(cood, ft_parse_oneblock(data), 4 * sizeof(t_point));
-		data+= 20;
+		data += 20;
 		if (tetro_count > 0)
 			data++;
 		node = what_tetro(cood);

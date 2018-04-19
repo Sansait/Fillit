@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/16 20:18:58 by nihuynh           #+#    #+#             */
-/*   Updated: 2018/04/19 00:14:46 by nihuynh          ###   ########.fr       */
+/*   Updated: 2018/04/19 04:18:40 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ void			ft_exit_clean(void);
 ** Handle the 2 types of output for the tiles (isvalid can exit the program).
 */
 int				tile_ishash(char c);
-int			tile_notvalid(char c);
+int				tile_notvalid(char c);
 /*
 ** Functions in parse_toolbox.c :
 ** built_point: Create a point from postion x and y.

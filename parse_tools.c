@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/18 18:38:00 by nihuynh           #+#    #+#             */
-/*   Updated: 2018/04/19 00:40:10 by nihuynh          ###   ########.fr       */
+/*   Updated: 2018/04/19 04:16:23 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,6 @@ void	set_tetro(t_tetro **pnode)
 		(*pnode)->hash[i].x -= xoffset;
 		(*pnode)->hash[i].y -= yoffset;
 	}
-	(*pnode)->width = 1 +  toby[0] - xoffset;
+	(*pnode)->width = 1 + toby[0] - xoffset;
 	(*pnode)->length = 1 + toby[1] - yoffset;
 }
