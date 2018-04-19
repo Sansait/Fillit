@@ -59,7 +59,7 @@ static	t_point	*ft_parse_oneblock(char *data)
 		while (toby[1] < 4)
 		{
 			if (tile_notvalid(data[(5 * toby[0]) + toby[1]]))
-				ft_exit_error();
+				ft_exit_clean();
 			if (tile_ishash(data[(5 * toby[0]) + toby[1]]))
 			{
 				if (toby[2] == 4)
