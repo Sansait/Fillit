@@ -3,12 +3,13 @@ ___
 ### Roadmap
 
 #### to add
-built the tetros struct
-built the list of tetrinos
-Solver
-Display
+map struc and way to manipulate it.
+Solver.
+Display for the map.
+More comments.
 #### to remove
 #### to fix
+protection on the malloc.
 ___
 ### Uncommit
 #### added
@@ -26,7 +27,9 @@ parce_tools.c
 display.c
 README.md
 #### fixed
+header change detection into the Makefile
 #### removed
+valgrind rule on the Makefile
 error_checker.c
 ASSERT
 SAFEALLOC
