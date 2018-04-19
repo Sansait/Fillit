@@ -6,12 +6,12 @@
 #    By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/04/16 18:24:33 by nihuynh           #+#    #+#              #
-#    Updated: 2018/04/19 00:12:54 by nihuynh          ###   ########.fr        #
+#    Updated: 2018/04/19 11:26:27 by sklepper         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 # Config Fillit:
 NAME	:=	fillit
-SRC		:=	main.c reader.c toolbox.c parse_tools.c display.c solver.c
+SRC		:=	main.c reader.c toolbox.c parse_tools.c display.c solver.c map.c
 HEAD	:=	fillit.h Libft/libft.h
 MAP		:=	./map/.fillit
 DEBUG	:=	TRUE

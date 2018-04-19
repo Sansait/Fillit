@@ -6,7 +6,7 @@
 /*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/16 16:50:26 by sklepper          #+#    #+#             */
-/*   Updated: 2018/04/19 10:10:53 by sklepper         ###   ########.fr       */
+/*   Updated: 2018/04/19 11:26:27 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,7 @@ static	t_point	*ft_parse_oneblock(char *data)
 ** return a pointer on the tetros.
 */
 
-static	t_tetro	what_tetro(t_point pos_set[4])
+static	t_tetro	what_tetro(t_point pos_set[4], char c)
 {
 	t_tetro	*node;
 	int		link_count;
@@ -101,6 +101,7 @@ static	t_tetro	what_tetro(t_point pos_set[4])
 		ft_exit_clean();
 	ft_memcpy(node->hash, pos_set, 4 * sizeof(t_point));
 	set_tetro(&node);
+	node->c = c;
 	return (*node);
 }
 
@@ -116,7 +117,9 @@ static	t_list	ft_slowcheck(char *data, int tetro_count)
 	t_list	*res;
 	t_point	cood[4];
 	t_tetro	node;
+	char	c;
 
+	c = 'A';
 	res = NULL;
 	while (tetro_count--)
 	{
@@ -124,9 +127,10 @@ static	t_list	ft_slowcheck(char *data, int tetro_count)
 		data += 20;
 		if (tetro_count > 0)
 			data++;
-		node = what_tetro(cood);
+		node = what_tetro(cood, c++);
 		ft_lstadd(&res, ft_lstnew(&node, sizeof(node)));
 	}
+	ft_lstrev(&res);
 	return (*res);
 }
 

@@ -6,7 +6,7 @@
 /*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/19 09:33:59 by sklepper          #+#    #+#             */
-/*   Updated: 2018/04/19 10:58:35 by sklepper         ###   ########.fr       */
+/*   Updated: 2018/04/19 11:26:27 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,4 +65,5 @@ int		ft_solver(t_list tetra)
 		ft_memdel((void**)greed);
 		greed = ft_init_map(sqr_size);
 	}
+	return (0);
 }

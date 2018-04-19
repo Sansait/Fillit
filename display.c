@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/19 00:05:38 by nihuynh           #+#    #+#             */
-/*   Updated: 2018/04/19 04:17:49 by nihuynh          ###   ########.fr       */
+/*   Updated: 2018/04/19 11:35:17 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,8 @@ void	print_tetro(t_tetro node)
 	print_pos_set(node.hash);
 	print_int("node length:", node.length);
 	print_int("\t\tnode width:", node.width);
+	ft_putstr("\nnode char:");
+	ft_putchar(node.c);
 	ft_putchar('\n');
 }
 

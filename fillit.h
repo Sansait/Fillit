@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/16 20:18:58 by nihuynh           #+#    #+#             */
-/*   Updated: 2018/04/19 10:52:10 by sklepper         ###   ########.fr       */
+/*   Updated: 2018/04/19 11:12:29 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ typedef struct	s_tetro
 	t_point		hash[4];
 	int			length;
 	int			width;
+	char		c;
 }				t_tetro;
 /*
 ** Read the file from a safe and open fd.
