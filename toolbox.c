@@ -10,7 +10,6 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
 #include "fillit.h"
 #include <stdlib.h>
 
@@ -23,7 +22,7 @@ void	ft_exit_error(void)
 void	ft_exit_clean(void)
 {
 	ft_putstr(MSG_ERROR);
-	ft_putstr("\n\t<============= HERE CLEAN =============>\n");
+//	ft_putstr("\n\t<============= HERE CLEAN =============>\n");
 	exit(-1);
 }
 

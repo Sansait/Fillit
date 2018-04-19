@@ -10,7 +10,6 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
 #include "fillit.h"
 
 t_point	built_point(int x, int y)

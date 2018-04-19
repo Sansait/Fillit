@@ -6,14 +6,14 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/16 20:18:58 by nihuynh           #+#    #+#             */
-/*   Updated: 2018/04/19 04:18:40 by nihuynh          ###   ########.fr       */
+/*   Updated: 2018/04/19 14:41:25 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FILLIT_FILLIT_H
 # define FILLIT_FILLIT_H
 
-# include "libft.h"
+# include "Libft/libft.h"
 # define BUFF_SIZE 546
 # define MSG_ERROR "error"
 # define MSG_USAGE "usage: fillit [] map_file.fillit"
@@ -31,6 +31,7 @@ typedef struct	s_tetro
 	t_point		hash[4];
 	int			length;
 	int			width;
+	char		c;
 }				t_tetro;
 /*
 ** Read the file from a safe and open fd.
@@ -65,5 +66,17 @@ void			set_tetro(t_tetro **pnode);
 void			print_int(char *name, int value);
 void			print_pos_set(t_point set[4]);
 void			print_lst_tetro(t_list *lst_tetro);
+/*
+** Solver functions :
+** Backtracking
+*/
+int		ft_solver(t_list tetra);
+char	**ft_init_map(int sqr_size);
+int		ft_roundup_sqrt(int n);
+char	**ft_place_tetra(t_tetro *tetra, char **greed, int x, int y);
+char	**ft_remove_tetra(t_tetro *tetra, char **greed, int x, int y);
+
+
+
 
 #endif
