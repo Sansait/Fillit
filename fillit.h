@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/16 20:18:58 by nihuynh           #+#    #+#             */
-/*   Updated: 2018/04/19 11:12:29 by sklepper         ###   ########.fr       */
+/*   Updated: 2018/04/19 14:41:25 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,9 @@ void			print_lst_tetro(t_list *lst_tetro);
 int		ft_solver(t_list tetra);
 char	**ft_init_map(int sqr_size);
 int		ft_roundup_sqrt(int n);
+char	**ft_place_tetra(t_tetro *tetra, char **greed, int x, int y);
+char	**ft_remove_tetra(t_tetro *tetra, char **greed, int x, int y);
+
 
 
 

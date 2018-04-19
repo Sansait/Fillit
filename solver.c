@@ -6,21 +6,21 @@
 /*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/19 09:33:59 by sklepper          #+#    #+#             */
-/*   Updated: 2018/04/19 11:26:27 by sklepper         ###   ########.fr       */
+/*   Updated: 2018/04/19 15:41:56 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-int		ft_place_tetra(t_tetro *tetra, char ***greed, int x, int y)
+int		ft_check_map(t_point hash[4], char **greed, int x, int y)
 {
-	if (*greed[x + tetra->hash[0].x][y + tetra->hash[0].y] != '.')
+	if (greed[y + hash[0].y][x + hash[0].x] != '.')
 		return (0);
-	if (*greed[x + tetra->hash[1].x][y + tetra->hash[1].y] != '.')
+	if (greed[y + hash[1].y][x + hash[1].x] != '.')
 		return (0);
-	if (*greed[x + tetra->hash[2].x][y + tetra->hash[2].y] != '.')
+	if (greed[y + hash[2].y][x + hash[2].x] != '.')
 		return (0);
-	if (*greed[x + tetra->hash[3].x][y + tetra->hash[3].y] != '.')
+	if (greed[y + hash[3].y][x + hash[3].x] != '.')
 		return (0);
 	return (1);
 }
@@ -31,23 +31,28 @@ int		ft_solve_it(t_list *tetra, int sqr_size, char **greed)
 	int		y;
 	t_tetro	*tmp;
 
-	tmp = tetra->content;
-	if (tmp == NULL)
-		return (1);
-	x = 0;
-	while (x <= sqr_size - tmp->width)
+	if (tetra == NULL)
 	{
-		y = 0;
-		while (y <= sqr_size - tmp->length)
+		ft_puttab(greed);
+		return (1);
+	}
+	tmp = tetra->content;
+	y = 0;
+	while (y <= sqr_size - tmp->length)
+	{
+		x = 0;
+		while (x <= sqr_size - tmp->width)
 		{
-			if (ft_place_tetra(tmp, &greed, x, y))
+			if (ft_check_map(tmp->hash, greed, x, y))
 			{
+				greed = ft_place_tetra(tmp, greed, x, y);
 				if (ft_solve_it(tetra->next, sqr_size, greed))
 					return (1);
+				greed = ft_remove_tetra(tmp, greed, x, y);
 			}
-			y++;
+			x++;
 		}
-		x++;
+		y++;
 	}
 	return (0);
 }

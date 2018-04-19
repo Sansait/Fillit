@@ -6,7 +6,7 @@
 /*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/13 13:11:03 by sklepper          #+#    #+#             */
-/*   Updated: 2018/04/16 15:50:59 by sklepper         ###   ########.fr       */
+/*   Updated: 2018/04/19 12:46:26 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,13 @@
 int		ft_lstsize(t_list *begin_list)
 {
 	int i;
+	t_list *tmp;
 
+	tmp = begin_list;
 	i = 1;
-	while (begin_list->next != NULL)
+	while (tmp->next != NULL)
 	{
-		begin_list = begin_list->next;
+		tmp = tmp->next;
 		i++;
 	}
 	return (i);

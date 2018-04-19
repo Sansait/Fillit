@@ -6,12 +6,11 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/19 00:05:38 by nihuynh           #+#    #+#             */
-/*   Updated: 2018/04/19 11:35:17 by sklepper         ###   ########.fr       */
+/*   Updated: 2018/04/19 12:47:29 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
-#include "libft.h"
 
 void	print_int(char *name, int value)
 {
