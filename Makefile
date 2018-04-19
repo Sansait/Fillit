@@ -11,7 +11,7 @@
 # **************************************************************************** #
 # Config Fillit:
 NAME	:=	fillit
-SRC		:=	main.c reader.c toolbox.c parse_tools.c display.c
+SRC		:=	main.c reader.c toolbox.c parse_tools.c display.c solver.c
 HEAD	:=	fillit.h Libft/libft.h
 MAP		:=	./map/.fillit
 DEBUG	:=	TRUE

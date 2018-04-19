@@ -6,7 +6,7 @@
 /*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/16 16:50:26 by sklepper          #+#    #+#             */
-/*   Updated: 2018/04/19 04:22:25 by nihuynh          ###   ########.fr       */
+/*   Updated: 2018/04/19 10:10:53 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -131,7 +131,7 @@ static	t_list	ft_slowcheck(char *data, int tetro_count)
 }
 
 /*
-** Read fron the file and check the line count.
+** Read from the file and check the line count.
 ** Fetch the data from the open file.
 */
 

@@ -1,30 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   map.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/04/16 16:48:58 by sklepper          #+#    #+#             */
-/*   Updated: 2018/04/19 10:52:10 by sklepper         ###   ########.fr       */
+/*   Created: 2018/04/19 10:14:37 by sklepper          #+#    #+#             */
+/*   Updated: 2018/04/19 10:24:19 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
-#include <fcntl.h>
 
-int		main(int ac, char **av)
+char	**ft_init_map(int sqr_size)
 {
-	int fd;
-	t_list tetra;
+	char	**map;
+	int		i;
 
-	if (ac != 2)
-		ft_exit_usage();
-	if ((fd = open(av[1], O_RDONLY)) == -1)
-		ft_exit_error();
-	if (DEBUG)
-		ft_putstr("\t<============== DEBUG ON ==============>\n");
-	tetra = ft_parse(fd);
-	ft_solver(tetra);
-	return (0);
+	map = malloc(sizeof(char *) * sqr_size);
+	i = 0;
+	while (i < sqr_size)
+	{
+		map[i] = ft_memset(ft_strnew((size_t)sqr_size), '.', (size_t)sqr_size);
+		i++;
+	}
+	return (map);
+}
+
+int		ft_roundup_sqrt(int n)
+{
+	int i;
+
+	i = 2;
+	while (i * i < n)
+	{
+		i++;
+	}
+	return (i);
 }
