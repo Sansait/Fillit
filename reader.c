@@ -19,8 +19,8 @@
 
 static	void	ft_fastcheck(char *data, int tetro_count)
 {
-//	if (DEBUG)
-//		print_int("\ntetro_count :", tetro_count);
+	if (DEBUG)
+		print_int("\ntetro_count :", tetro_count);
 	while (tetro_count--)
 	{
 		if (data[4] != '\n' || data[9] != '\n' || data[14] != '\n' \
@@ -54,8 +54,8 @@ static	t_point	*ft_parse_oneblock(char *data)
 		ft_exit_clean();
 	while (toby[0] < 4)
 	{
-		toby[1] = 0;
-		while (toby[1] < 4)
+		toby[1] = -1;
+		while (++toby[1] < 4)
 		{
 			if (tile_notvalid(data[(5 * toby[0]) + toby[1]]))
 				ft_exit_clean();
@@ -63,13 +63,13 @@ static	t_point	*ft_parse_oneblock(char *data)
 			{
 				if (toby[2] == 4)
 					ft_exit_clean();
-				pos_set[toby[2]] = built_point(toby[1], toby[0]);
-				toby[2]++;
+				pos_set[toby[2]++] = built_point(toby[1], toby[0]);
 			}
-			toby[1]++;
 		}
 		toby[0]++;
 	}
+	if (toby[2] != 4)
+		ft_exit_clean();
 	return (pos_set);
 }
 
@@ -88,14 +88,14 @@ static	t_tetro	what_tetro(t_point pos_set[4], char c)
 
 	link_count = 0;
 	i = -1;
-//	if (DEBUG)
-//		print_pos_set(pos_set);
+	if (DEBUG)
+		print_pos_set(pos_set);
 	if (!(node = ft_memalloc(sizeof(t_tetro))))
 		ft_exit_clean();
 	while (++i < 4)
 		link_count += check_links(i, pos_set);
-//	if (DEBUG)
-//		print_int("link_count : ", link_count);
+	if (DEBUG)
+		print_int("link_count : ", link_count);
 	if (link_count < 6)
 		ft_exit_clean();
 	ft_memcpy(node->hash, pos_set, 4 * sizeof(t_point));
@@ -145,16 +145,16 @@ t_list			ft_parse(int fd)
 	t_list	tetra;
 
 	bytes = read(fd, buff, BUFF_SIZE);
-//	if (DEBUG)
-//		print_int("\nBytes read ;", bytes);
+	if (DEBUG)
+		print_int("\nBytes read ;", bytes);
 	if (bytes % 21 != 20)
 		ft_exit_error();
 	buff[bytes] = '\0';
 	ft_fastcheck(buff, ((bytes / 21) + 1));
 	tetra = ft_slowcheck(buff, ((bytes / 21) + 1));
-//	if (DEBUG)
-//		ft_putstr("\n\t<============ PARSING DONE ============>\n");
-//	if (DEBUG)
-//		print_lst_tetro(&tetra);
+	if (DEBUG)
+		ft_putstr("\n\t<============ PARSING DONE ============>\n");
+	if (DEBUG)
+		print_lst_tetro(&tetra);
 	return (tetra);
 }
