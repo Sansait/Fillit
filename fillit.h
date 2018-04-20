@@ -18,7 +18,7 @@
 # define MSG_ERROR "error"
 # define MSG_USAGE "usage: fillit [] map_file.fillit"
 
-# define DEBUG 1
+# define DEBUG 0
 
 typedef struct	s_point
 {
@@ -78,8 +78,5 @@ int				ft_roundup_sqrt(int n);
 char			**ft_place_tetra(t_tetro *tetra, char **greed, int x, int y);
 char			**ft_remove_tetra(t_tetro *tetra, char **greed, int x, int y);
 void			ft_delete_map(char ***greed, int sqr_size);
-
-
-
 
 #endif
