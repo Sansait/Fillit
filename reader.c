@@ -54,8 +54,8 @@ static	t_point	*ft_parse_oneblock(char *data)
 		ft_exit_clean();
 	while (toby[0] < 4)
 	{
-		toby[1] = 0;
-		while (toby[1] < 4)
+		toby[1] = -1;
+		while (++toby[1] < 4)
 		{
 			if (tile_notvalid(data[(5 * toby[0]) + toby[1]]))
 				ft_exit_clean();
@@ -63,13 +63,13 @@ static	t_point	*ft_parse_oneblock(char *data)
 			{
 				if (toby[2] == 4)
 					ft_exit_clean();
-				pos_set[toby[2]] = built_point(toby[1], toby[0]);
-				toby[2]++;
+				pos_set[toby[2]++] = built_point(toby[1], toby[0]);
 			}
-			toby[1]++;
 		}
 		toby[0]++;
 	}
+	if (toby[2] != 4)
+		ft_exit_clean();
 	return (pos_set);
 }
 
