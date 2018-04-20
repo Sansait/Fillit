@@ -22,7 +22,8 @@ void	ft_exit_error(void)
 void	ft_exit_clean(void)
 {
 	ft_putstr(MSG_ERROR);
-//	ft_putstr("\n\t<============= HERE CLEAN =============>\n");
+	if (DEBUG)
+		ft_putstr("\n\t<============= HERE CLEAN =============>\n");
 	exit(-1);
 }
 

@@ -18,7 +18,7 @@
 # define MSG_ERROR "error"
 # define MSG_USAGE "usage: fillit [] map_file.fillit"
 
-# define DEBUG 1
+# define DEBUG 0
 
 typedef struct	s_point
 {
@@ -70,13 +70,10 @@ void			print_lst_tetro(t_list *lst_tetro);
 ** Solver functions :
 ** Backtracking
 */
-int		ft_solver(t_list tetra);
-char	**ft_init_map(int sqr_size);
-int		ft_roundup_sqrt(int n);
-char	**ft_place_tetra(t_tetro *tetra, char **greed, int x, int y);
-char	**ft_remove_tetra(t_tetro *tetra, char **greed, int x, int y);
-
-
-
+int				ft_solver(t_list tetra);
+char			**ft_init_map(int sqr_size);
+int				ft_roundup_sqrt(int n);
+char			**ft_place_tetra(t_tetro *tetra, char **greed, int x, int y);
+char			**ft_remove_tetra(t_tetro *tetra, char **greed, int x, int y);
 
 #endif

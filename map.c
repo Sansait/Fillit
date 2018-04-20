@@ -57,4 +57,3 @@ int		ft_roundup_sqrt(int n)
 	}
 	return (i);
 }
-
