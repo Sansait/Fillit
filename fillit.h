@@ -13,7 +13,7 @@
 #ifndef FILLIT_FILLIT_H
 # define FILLIT_FILLIT_H
 
-#include "libft.h"
+# include "libft.h"
 # define BUFF_SIZE 546
 # define MSG_ERROR "error"
 # define MSG_USAGE "usage: fillit [] map_file.fillit"

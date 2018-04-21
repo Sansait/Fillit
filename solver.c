@@ -6,7 +6,7 @@
 /*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/19 09:33:59 by sklepper          #+#    #+#             */
-/*   Updated: 2018/04/20 17:44:22 by nihuynh          ###   ########.fr       */
+/*   Updated: 2018/04/21 23:19:55 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ static int	ft_solve_it(t_list *tetra, int sqr_size, char **greed)
 ** Iteration on the size if there is no solution
 */
 
-int		ft_solver(t_list tetra)
+int			ft_solver(t_list tetra)
 {
 	int		sqr_size;
 	char	**greed;

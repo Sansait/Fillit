@@ -3,17 +3,30 @@ ___
 ### Roadmap
 
 #### to add
-map struc and way to manipulate it.
-Solver.
-Display for the map.
 More comments.
 #### to remove
 #### to fix
-protection on the malloc.
+need to return greed for the solver ??
+More test maps
+
 ___
 ### Uncommit
 #### added
 #### fixed
+#### removed
+___
+
+### [V1.0.0] 2018-04-20
+
+#### added
+maps for error 
+map for bench
+protection on the malloc.
+Solver.
+Display for the map.
+map struc and way to manipulate it.
+#### fixed
+name of the files
 #### removed
 ___
 
