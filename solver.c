@@ -79,6 +79,6 @@ int		ft_solver(t_list tetra)
 		greed = ft_init_map(sqr_size);
 	}
 	ft_puttab(greed);
-	ft_exit_clean();
+	ft_delete_map(&greed, sqr_size);
 	return (0);
 }

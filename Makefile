@@ -11,9 +11,10 @@
 # **************************************************************************** #
 # Config Fillit:
 NAME	:=	fillit
-SRC		:=	main.c reader.c toolbox.c parse_tools.c display.c solver.c map.c
+SRC		:=	main.c utils_tools.c display.c \
+			parser.c  parse_tools.c \
+			solver.c solver_tools.c
 HEAD	:=	fillit.h Libft/libft.h
-MAP		:=	./map/.fillit
 DEBUG	:=	TRUE
 RM		:=	/bin/rm -f
 CC		:=	clang
@@ -31,6 +32,14 @@ INCFLAG	:=	-I$(LIBDIR) -I$(INCDIR)
 LIBFLAG	:=	-L$(LIBDIR) -lft
 OBJ		:=	$(addprefix $(OBJDIR)/, $(SRC:.c=.o))
 # **************************************************************************** #
+MAPDIR		:=	./map
+MAPERROR	:=	empty_square.fillit full_square.fillit less_hash_00.fillit \
+				less_hash.fillit more_hash.fillit
+MAPVALID	:=	5,11s.fillit 8,11s.fillit 9,63s.fillit 10,8s.fillit \
+				12,04s.fillit 14,10s.fillit 17,70s.fillit 28,97s.fillit
+MAP_ERR		:=	$(addprefix $(MAPDIR)/, $(MAPERROR))
+MAP_VALID	:=	$(addprefix $(MAPDIR)/, $(MAPVALID))
+# **************************************************************************** #
 # Target rules :
 all: $(NAME)
 $(NAME): $(LIBDIR)/libft.a $(OBJ) $(HEAD)
@@ -47,6 +56,11 @@ fclean: clean
 	make -C $(LIBDIR)/ fclean
 	$(RM) $(NAME)
 re: fclean all
-debug : clean $(OBJ)
+debug : fclean $(OBJ)
 	$(CC) $(CFLAG) $(DEBUGCC) -o $(NAME) $(OBJ) $(LIBFLAG) $(INCFLAG)
-.PHONY: all, $(NAME), clean, fclean, re, val
+run: re
+	@echo "\nRunning error maps : "
+	@sh map_runner.sh $(MAP_ERR)
+	@echo "\nRunning valid maps : "
+	@sh map_runner.sh $(MAP_VALID)
+.PHONY: all, $(NAME), clean, fclean, re, debug
