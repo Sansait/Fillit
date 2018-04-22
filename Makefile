@@ -33,12 +33,11 @@ LIBFLAG	:=	-L$(LIBDIR) -lft
 OBJ		:=	$(addprefix $(OBJDIR)/, $(SRC:.c=.o))
 # **************************************************************************** #
 MAPDIR		:=	./map
-MAPERROR	:=	empty_square.fillit full_square.fillit less_hash_00.fillit \
-				less_hash.fillit more_hash.fillit
-MAPVALID	:=	4,7s.fillit 7,4s.fillit 9s.fillit 10s.fillit \
-				11,4s.fillit 13,1s.fillit 16,2s.fillit 26,4s.fillit
-MAP_ERR		:=	$(addprefix $(MAPDIR)/, $(MAPERROR))
-MAP_VALID	:=	$(addprefix $(MAPDIR)/, $(MAPVALID))
+MAPERROR	:=	empty_square full_square less_hash_00 less_hash more_hash \
+				corner_hash
+MAPVALID	:=	4,7s 7,4s 9s 10s 11,4s 13,1s 16,2s 26,4s
+MAP_ERR		:=	$(addprefix $(MAPDIR)/, $(addsuffix ".fillit", $(MAPERROR)))
+MAP_VALID	:=	$(addprefix $(MAPDIR)/, $(addsuffix ".fillit", $(MAPVALID)))
 # **************************************************************************** #
 # Target rules :
 all: $(NAME)
@@ -51,6 +50,7 @@ $(OBJDIR)/%.o: %.c
 	$(CC) $(CFLAG) $(INCFLAG) -o $@ -c $<
 clean:
 	$(RM) $(OBJ)
+	make -C $(LIBDIR)/ clean
 	rmdir $(OBJDIR) 2> /dev/null || true
 fclean: clean
 	make -C $(LIBDIR)/ fclean
@@ -58,7 +58,7 @@ fclean: clean
 re: fclean all
 debug : fclean $(OBJ)
 	$(CC) $(CFLAG) $(DEBUGCC) -o $(NAME) $(OBJ) $(LIBFLAG) $(INCFLAG)
-run: re
+run: re $(MAP_ERR) $(MAP_VALID)
 	@echo "\nRunning error maps : "
 	@sh map_runner.sh $(MAP_ERR)
 	@echo "\nRunning valid maps : "
