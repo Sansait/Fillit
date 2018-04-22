@@ -13,7 +13,7 @@
 #ifndef FILLIT_FILLIT_H
 # define FILLIT_FILLIT_H
 
-# include "Libft/libft.h"
+# include "libft.h"
 # define BUFF_SIZE 546
 # define MSG_ERROR "error"
 # define MSG_USAGE "usage: fillit [] map_file.fillit"
@@ -34,11 +34,12 @@ typedef struct	s_tetro
 	char		c;
 }				t_tetro;
 /*
+** Functions in parser.c :
 ** Read the file from a safe and open fd.
 */
 t_list			ft_parse(int fd);
 /*
-** Functions in toolbox.c :
+** Functions in utils_tool.c :
 ** ft_exit_error : Commun exit for every error encounter during the program.
 ** ft_exit_usage : Exit if there is a issues while calling the executable.
 */
@@ -51,7 +52,7 @@ void			ft_exit_clean(void);
 int				tile_ishash(char c);
 int				tile_notvalid(char c);
 /*
-** Functions in parse_toolbox.c :
+** Functions in parse_tools.c :
 ** built_point: Create a point from postion x and y.
 ** check_links : Calculate the link_count of a hash tile.
 ** set_tetro : Set the length and width of a tetro node and normalize hash[4].
@@ -67,16 +68,17 @@ void			print_int(char *name, int value);
 void			print_pos_set(t_point set[4]);
 void			print_lst_tetro(t_list *lst_tetro);
 /*
-** Main solver.c function :
+** Functions in display.c :
+** Backtracking solution finder :
 */
 int				ft_solver(t_list tetra);
 /*
-** Functions of map.c
+** Functions of solver_tools.c
 */
 char			**ft_init_map(int sqr_size);
 int				ft_roundup_sqrt(int n);
-char			**ft_place_tetra(t_tetro *tetra, char **greed, int x, int y);
-char			**ft_remove_tetra(t_tetro *tetra, char **greed, int x, int y);
+void			ft_place_tetra(t_tetro *tetra, char **greed, int x, int y);
+void			ft_remove_tetra(t_tetro *tetra, char **greed, int x, int y);
 void			ft_delete_map(char ***greed, int sqr_size);
 
 #endif

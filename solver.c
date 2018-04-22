@@ -6,7 +6,7 @@
 /*   By: sklepper <sklepper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/19 09:33:59 by sklepper          #+#    #+#             */
-/*   Updated: 2018/04/20 14:39:59 by sklepper         ###   ########.fr       */
+/*   Updated: 2018/04/21 23:19:55 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 ** Check to see if the tera is fitting in this place
 */
 
-int		ft_check_map(t_point hash[4], char **greed, int x, int y)
+static int	ft_check_map(t_point hash[4], char **greed, int x, int y)
 {
 	if (greed[y + hash[0].y][x + hash[0].x] != '.')
 		return (0);
@@ -33,7 +33,7 @@ int		ft_check_map(t_point hash[4], char **greed, int x, int y)
 ** Recursive solution finder in a set square
 */
 
-int		ft_solve_it(t_list *tetra, int sqr_size, char **greed)
+static int	ft_solve_it(t_list *tetra, int sqr_size, char **greed)
 {
 	int		x;
 	int		y;
@@ -50,10 +50,10 @@ int		ft_solve_it(t_list *tetra, int sqr_size, char **greed)
 		{
 			if (ft_check_map(tmp->hash, greed, x, y))
 			{
-				greed = ft_place_tetra(tmp, greed, x, y);
+				ft_place_tetra(tmp, greed, x, y);
 				if (ft_solve_it(tetra->next, sqr_size, greed))
 					return (1);
-				greed = ft_remove_tetra(tmp, greed, x, y);
+				ft_remove_tetra(tmp, greed, x, y);
 			}
 		}
 	}
@@ -65,7 +65,7 @@ int		ft_solve_it(t_list *tetra, int sqr_size, char **greed)
 ** Iteration on the size if there is no solution
 */
 
-int		ft_solver(t_list tetra)
+int			ft_solver(t_list tetra)
 {
 	int		sqr_size;
 	char	**greed;
@@ -79,6 +79,6 @@ int		ft_solver(t_list tetra)
 		greed = ft_init_map(sqr_size);
 	}
 	ft_puttab(greed);
-	ft_exit_clean();
+	ft_delete_map(&greed, sqr_size);
 	return (0);
 }

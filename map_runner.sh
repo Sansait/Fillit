@@ -11,9 +11,13 @@
 # **************************************************************************** #
 #!/bin/bash
 
-if [ $# -eq 1 ]
+if [ $# -eq 0 ]
 then
-	make && cat $1 && ./fillit $1
+	echo "Usage: sh map_runner.sh [void] cimer"
 else
-	echo "Usage: sh map_runner.sh [map.fillit] cimer"
+	for num
+	do
+   		time ./fillit $num
+		echo "\t" $num
+	done
 fi
