@@ -53,26 +53,24 @@ void	ft_delete_map(char ***greed, int sqr_size)
 ** Placing the tetra on the map for the next recursive
 */
 
-char	**ft_place_tetra(t_tetro *tetra, char **greed, int x, int y)
+void	ft_place_tetra(t_tetro *tetra, char **greed, int x, int y)
 {
 	greed[y + tetra->hash[0].y][x + tetra->hash[0].x] = tetra->c;
 	greed[y + tetra->hash[1].y][x + tetra->hash[1].x] = tetra->c;
 	greed[y + tetra->hash[2].y][x + tetra->hash[2].x] = tetra->c;
 	greed[y + tetra->hash[3].y][x + tetra->hash[3].x] = tetra->c;
-	return (greed);
 }
 
 /*
 ** Removing the tetra from the map
 */
 
-char	**ft_remove_tetra(t_tetro *tetra, char **greed, int x, int y)
+void	ft_remove_tetra(t_tetro *tetra, char **greed, int x, int y)
 {
 	greed[y + tetra->hash[0].y][x + tetra->hash[0].x] = '.';
 	greed[y + tetra->hash[1].y][x + tetra->hash[1].x] = '.';
 	greed[y + tetra->hash[2].y][x + tetra->hash[2].x] = '.';
 	greed[y + tetra->hash[3].y][x + tetra->hash[3].x] = '.';
-	return (greed);
 }
 
 /*

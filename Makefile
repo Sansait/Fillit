@@ -35,8 +35,8 @@ OBJ		:=	$(addprefix $(OBJDIR)/, $(SRC:.c=.o))
 MAPDIR		:=	./map
 MAPERROR	:=	empty_square.fillit full_square.fillit less_hash_00.fillit \
 				less_hash.fillit more_hash.fillit
-MAPVALID	:=	5,11s.fillit 8,11s.fillit 9,63s.fillit 10,8s.fillit \
-				12,04s.fillit 14,10s.fillit 17,70s.fillit 28,97s.fillit
+MAPVALID	:=	4,7s.fillit 7,4s.fillit 9s.fillit 10s.fillit \
+				11,4s.fillit 13,1s.fillit 16,2s.fillit 26,4s.fillit
 MAP_ERR		:=	$(addprefix $(MAPDIR)/, $(MAPERROR))
 MAP_VALID	:=	$(addprefix $(MAPDIR)/, $(MAPVALID))
 # **************************************************************************** #
@@ -63,4 +63,4 @@ run: re
 	@sh map_runner.sh $(MAP_ERR)
 	@echo "\nRunning valid maps : "
 	@sh map_runner.sh $(MAP_VALID)
-.PHONY: all, $(NAME), clean, fclean, re, debug
+.PHONY: all, $(NAME), clean, fclean, re, debug, run

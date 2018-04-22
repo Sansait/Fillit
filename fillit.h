@@ -77,8 +77,8 @@ int				ft_solver(t_list tetra);
 */
 char			**ft_init_map(int sqr_size);
 int				ft_roundup_sqrt(int n);
-char			**ft_place_tetra(t_tetro *tetra, char **greed, int x, int y);
-char			**ft_remove_tetra(t_tetro *tetra, char **greed, int x, int y);
+void			ft_place_tetra(t_tetro *tetra, char **greed, int x, int y);
+void			ft_remove_tetra(t_tetro *tetra, char **greed, int x, int y);
 void			ft_delete_map(char ***greed, int sqr_size);
 
 #endif

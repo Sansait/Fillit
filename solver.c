@@ -50,10 +50,10 @@ static int	ft_solve_it(t_list *tetra, int sqr_size, char **greed)
 		{
 			if (ft_check_map(tmp->hash, greed, x, y))
 			{
-				greed = ft_place_tetra(tmp, greed, x, y);
+				ft_place_tetra(tmp, greed, x, y);
 				if (ft_solve_it(tetra->next, sqr_size, greed))
 					return (1);
-				greed = ft_remove_tetra(tmp, greed, x, y);
+				ft_remove_tetra(tmp, greed, x, y);
 			}
 		}
 	}
