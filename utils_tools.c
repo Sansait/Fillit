@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/21 23:20:20 by nihuynh           #+#    #+#             */
-/*   Updated: 2018/04/21 23:20:22 by nihuynh          ###   ########.fr       */
+/*   Updated: 2018/04/23 10:17:45 by nihuynh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,13 @@
 
 void	ft_exit_error(void)
 {
-	ft_putstr(MSG_ERROR);
+	ft_putendl(MSG_ERROR);
 	exit(0);
 }
 
 void	ft_exit_clean(void)
 {
-	ft_putstr(MSG_ERROR);
+	ft_putendl(MSG_ERROR);
 	exit(0);
 }
 
