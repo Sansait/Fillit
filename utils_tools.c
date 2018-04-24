@@ -27,7 +27,7 @@ void	ft_exit_clean(void)
 
 void	ft_exit_usage(void)
 {
-	ft_putstr(MSG_USAGE);
+	ft_putendl(MSG_USAGE);
 	exit(0);
 }
 
