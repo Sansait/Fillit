@@ -6,7 +6,7 @@
 /*   By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/21 23:18:58 by nihuynh           #+#    #+#             */
-/*   Updated: 2018/04/21 23:19:01 by nihuynh          ###   ########.fr       */
+/*   Updated: 2018/04/23 16:51:31 by sklepper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,9 @@ char	**ft_init_map(int sqr_s)
 	i = 0;
 	while (i < sqr_s)
 	{
-		if (!(map[i] = ft_memset(ft_strnew((size_t)sqr_s), '.', (size_t)sqr_s)))
+		if (!(map[i] = ft_strnew((size_t)sqr_s)))
 			ft_exit_clean();
+		map[i] = ft_memset(map[i], '.', (size_t)sqr_s);
 		i++;
 	}
 	map[i] = 0;
