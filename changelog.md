@@ -1,19 +1,14 @@
 # Fillit
 ___
-### Roadmap
 
-#### to add
-More comments.
-Better Hanling of the errors.
-#### to remove
-#### to fix
-need to return greed for the solver ??
-More test maps
-
-___
 ### Uncommit
 #### added
+More comments.
+Better readme.
+Better Hanling of the errors.
 #### fixed
+need to return greed for the solver ??
+More test maps
 #### removed
 ___
 
