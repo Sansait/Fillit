@@ -27,7 +27,7 @@ then
 
 		echo "\n"$MAP".fillit"
 		time $PROGRAMDIR/fillit $MAPDIR$MAP.fillit
-	done	
+	done
 else
 	echo "Usage: sh map_runner.sh [void] cimer"
 fi
